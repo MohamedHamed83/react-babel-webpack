@@ -28,7 +28,7 @@ module.exports = {
   },
 
   output: {
-    path: root(__dirname, './dist/assets'),
+    path: root('./dist'),
     publicPath: localPath,
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
@@ -125,7 +125,7 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: localPath,
+    contentBase: './src',
     stats: 'minimal'
   }
 }
