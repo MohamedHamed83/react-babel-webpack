@@ -98,7 +98,14 @@ module.exports = {
         })
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file-loader?name=[path][name].[ext]'
+        loader: [
+           {
+             loader: 'file-loader?name=[path][name].[ext]'
+            },
+           {
+             loader:'url-loader'
+            }
+        ]
       }, {
         test: /\.html$/,
         loader: 'raw-loader'
@@ -126,6 +133,7 @@ module.exports = {
 
   devServer: {
     contentBase: './src',
+    port:8080,
     stats: 'minimal'
   }
 }

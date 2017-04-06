@@ -11,9 +11,9 @@ div.app {
 h1, label {
   margin: 0
 }
-
+.selected{}
 div.app {
-  background-image: url('http://localhost:3000/rowdy.jpg');
+  background-image: url('/img/bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -27,8 +27,9 @@ div.whoops-404 {
   flex-wrap: wrap;
 }
 nav.menu {
-  background-color: black;
+  background-color: #0d1a37;
   position: fixed;
+  color: white;
   bottom: 0;
   left: 0;
   width: calc(100% - 1em);
