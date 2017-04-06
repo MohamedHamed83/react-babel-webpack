@@ -13,81 +13,88 @@ const precss = require('precss');
 const mqpacker = require('css-mqpacker');
 
 function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
+  args = Array
+    .prototype
+    .slice
+    .call(arguments, 0);
+  return path
+    .join
+    .apply(path, [__dirname].concat(args));
 }
 module.exports = {
 
-  entry: './src/index.js',
-  
-  output :{
+  entry: {
+    app: './src/index.js'
+  },
+
+  output: {
     path: root(__dirname, './dist/assets'),
     publicPath: localPath,
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
-  devtool : 'cheap-module-source-map',
-
+  devtool: 'cheap-module-source-map',
 
   // Initialize module
-  module : {
-    rules: [{
-        test: /\.js$/,
-        rules: [{
-          loader: 'babel-loader'
-        }, {
-          loader: 'eslint-loader',
-          options: {
-            emitError: false,
-            fix: true,
-            // default value
-            formatter: require("eslint/lib/formatters/stylish"),
-
-            // community formatter
-            formatter: require("eslint-friendly-formatter"),
-          }
-        }],
-        exclude: /node_modules/
-      },
+  module: {
+    rules: [
       {
+        test: /\.js$/,
+        rules: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015', 'react']
+            }
+          }, {
+            loader: 'eslint-loader',
+            options: {
+              emitError: false,
+              fix: true,
+              // default value
+              formatter: require("eslint/lib/formatters/stylish"),
+
+              // community formatter
+              formatter: require("eslint-friendly-formatter")
+            }
+          }
+        ],
+        exclude: /node_modules/
+      }, {
         test: /\.scss$/,
         exclude: /node_modules/,
         rules: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: [{
+          loader: [
+            {
               loader: 'css-loader'
             }, {
               loader: 'postcss-loader',
               options: {
-                postcss: [
-                  precss(),
-                  mqpacker(),
-                ],
-              },
-            },
-            {
+                postcss: [precss(), mqpacker()]
+              }
+            }, {
               loader: 'sass-loader'
             }
-          ],
+          ]
         })
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: [{
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
+          loader: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            }, {
+              loader: 'postcss-loader',
+              options: {
+                postcss: [precss(), mqpacker()]
+              }
             }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              postcss: [
-                precss(),
-                mqpacker(),
-              ],
-            },
-          }],
+          ]
         })
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
@@ -100,18 +107,11 @@ module.exports = {
   },
 
   plugins: [
-    new OpenBrowserPlugin({
-      url: localPath
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendors'],
-      minChunks: Infinity
-    }),
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      jquery: 'jquery'
-    }),
+    new OpenBrowserPlugin({url: localPath}),
+    new webpack
+      .optimize
+      .CommonsChunkPlugin({name: ['app'], minChunks: Infinity}),
+    new webpack.ProvidePlugin({jQuery: 'jquery', $: 'jquery', jquery: 'jquery', React: "react"}),
     new webpack.LoaderOptionsPlugin({
       test: /\.scss$/,
       options: {
@@ -120,21 +120,12 @@ module.exports = {
         }
       }
     }),
-    new HtmlWebpackPlugin({
-      chunkSortMode: 'dependency',
-      template: './dist/index.html',
-      inject: 'body'
-    }),
-    new ExtractTextPlugin({
-      filename: 'css/[name].css',
-      disable: false,
-      allChunks: true
-    })
+    new HtmlWebpackPlugin({chunkSortMode: 'dependency', template: './src/index.html', inject: 'body'}),
+    new ExtractTextPlugin({filename: 'css/[name].css', disable: false, allChunks: true})
   ],
 
-
-  devServer : {
-    contentBase: './dist',
+  devServer: {
+    contentBase: localPath,
     stats: 'minimal'
   }
 }
