@@ -1,9 +1,16 @@
 {
   "parser": "babel-eslint",
   "rules": {
-    "no-extra-semi": 0, // disallow unnecessary semicolons
+    "no-extra-semi": "error", // disallow unnecessary semicolons
     "semi-spacing": 0,
     "eqeqeq": "off",
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
     "curly": "warn",
      "semi": 2,                      // require or disallow use of semicolons instead of ASI
     // "no-console": 0,  // disallow use of console (off by default in the node environment)
