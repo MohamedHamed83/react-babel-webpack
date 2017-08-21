@@ -1,0 +1,11 @@
+{
+  "javascript": {
+    "app": "http://localhost:3000/app.f831096eb230037a7c7a.bundle.js",
+    "vendor": "http://localhost:3000/vendor.718cf61705a3432bb5d6.bundle.js"
+  },
+  "styles": {},
+  "assets": {},
+  "webpack": {
+    "version": "3.5.5"
+  }
+}
