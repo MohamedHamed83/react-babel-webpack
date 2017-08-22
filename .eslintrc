@@ -9,6 +9,9 @@
     "no-undef": "warn",
     "no-unreachable": "warn",
     "no-unused-vars": "warn",
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
     "constructor-super": "warn",
     "valid-typeof": "warn",
     "curly": "warn",
@@ -16,5 +19,8 @@
     // "no-console": 0,  // disallow use of console (off by default in the node environment)
     // "no-ex-assign": 0,            // disallow assigning to the exception in a catch block
     "quotes": ["warn", "single"]
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }

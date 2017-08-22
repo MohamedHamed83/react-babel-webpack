@@ -24,7 +24,7 @@ module.exports = {
   //where the application will start
   entry: {
     // only- means to only hot reload for successful updates
-    app: './src/index.js',
+    app: './src/Components/app.js',
     vendor: ['react', 'react-dom']
 
   },
