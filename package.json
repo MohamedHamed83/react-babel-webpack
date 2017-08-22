@@ -97,7 +97,6 @@
     "phantomjs-polyfill": "^0.0.2",
     "piping": "^1.0.0-rc.4",
     "postcss-loader": "^2.0.6",
-    "pre-commit": "^1.2.2",
     "precss": "^2.0.0",
     "prettier": "^1.5.3",
     "proxy-middleware": "^0.15.0",
@@ -140,6 +139,7 @@
     "react-dom": "^15.4.2",
     "react-icons": "^2.2.3",
     "react-router": "^4.0.0",
-    "react-router-dom": "^4.0.0"
+    "react-router-dom": "^4.0.0",
+    "styled-components": "^2.1.2"
   }
 }

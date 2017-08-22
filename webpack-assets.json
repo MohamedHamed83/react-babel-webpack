@@ -1,7 +1,7 @@
 {
   "javascript": {
-    "app": "http://localhost:3000/app.bee874c3b3f39d9f559b.bundle.js",
-    "vendor": "http://localhost:3000/vendor.957b5aa5547268f457c4.bundle.js"
+    "app": "http://localhost:3000/app.95b02b75f0af83d51b5f.bundle.js",
+    "vendor": "http://localhost:3000/vendor.58f1fd65f2a9e72734fb.bundle.js"
   },
   "styles": {},
   "assets": {},
