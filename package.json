@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server  --history-api-fallback --inline --progress --open",
+    "lint": "npm run lint-js && npm run lint-css",
+    "lint-css": "stylelint './src/**/*.css'",
+    "lint-js": "eslint '**/*.js' --ignore-path .gitignore",
     "build": "webpack  --config ./webpack.prod.config.js  --progress --profile --json > app.state.json --bail --display-modules --display-reasons"
   },
   "author": "Mohamed Hamed",
